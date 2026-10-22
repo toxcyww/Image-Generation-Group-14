@@ -1,0 +1,37 @@
+# Pretrained weights (keep Python architecture files under third_party/**/models/)
+/models/
+/torch_home/
+*.pt
+*.pth
+*.onnx
+*.tar
+*.ckpt
+*.safetensors
+*.bin
+*.zip
+*.7z
+*.rar
+
+# Generated results and caches
+/outputs/
+/.cache/
+/tmp/
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+
+# Local face photos and generated previews
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+
+# Local environments and credentials
+.venv/
+venv/
+.env
+.env.*
+.DS_Store
+Thumbs.db

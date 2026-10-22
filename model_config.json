@@ -1,0 +1,63 @@
+{
+  "version": "round2-joint-v2",
+  "initialization": "e4e inversion w0",
+  "optimized_parameters": "per-image W+ only",
+  "network_weight_updates": 0,
+  "steps": 300,
+  "lr_start": 0.005,
+  "lr_end": 0.001,
+  "seed_base": 20261020,
+  "donors": 2,
+  "alphas": [
+    0.4,
+    0.6,
+    0.8,
+    1.0
+  ],
+  "mixed_layers": [
+    3,
+    9
+  ],
+  "truncation": 0.8,
+  "weights": {
+    "nonid": 0.5,
+    "identity": 2,
+    "target_mse": 1,
+    "lpips": 0.8,
+    "target_parts": 4,
+    "target_color": 2,
+    "latent": 0.1,
+    "range": 1
+  },
+  "identity_margin": 0.25,
+  "fixed_last_step": true,
+  "reference_model_state_hashes": {
+    "e4e": "70c43be9d628e9d7acae891d55d3fbd2b97774ed7862b0712c84f2aba97043ff",
+    "generator": "e25ff8ff9200ff4bad512e265cbd8dbcce379e242da4365f73ec85c3918ebf1e",
+    "arcface": "5c9da77f2662105e3e9c5f31f95c035d5b2d7fb22d45dd3f17e90d0b3827ae84",
+    "attributes": "378686208631676fd95b2dbe668cee919fecdc9a2ae015b05f68149d1a859bf3",
+    "lpips": "19427870bdb29ae7a3c12b93d6f9acf630b0bcedb770d4bfe3e861cf8130c1c9"
+  },
+  "quality_scope": "Six development samples; no general privacy guarantee.",
+  "baseline": {
+    "kind": "nonidentity_condition",
+    "steps": 300,
+    "lr_start": 0.005,
+    "lr_end": 0.001,
+    "seed_base": 31000,
+    "truncation": 0.7,
+    "max_random_attempts": 4,
+    "weights": {
+      "expression": 5,
+      "rotation": 20,
+      "latent_prior": 0.2,
+      "range": 1
+    }
+  },
+  "comparison_columns": [
+    "source",
+    "nonid_baseline",
+    "target",
+    "final"
+  ]
+}

@@ -1,0 +1,22 @@
+Third-party attribution and licenses
+
+e4e: https://github.com/omertov/encoder4editing
+License: e4e/LICENSE
+
+SimSwap ArcFace: https://github.com/neuralchen/SimSwap
+License: SimSwap_LICENSE
+
+3DDFA-V2: https://github.com/cleardusk/3DDFA_V2
+License: tddfa/LICENSE
+
+LPIPS: https://github.com/richzhang/PerceptualSimilarity
+License: lpips/LICENSE
+
+YuNet: OpenCV face_detection_yunet_2023mar.onnx.
+https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet
+
+SqueezeNet: torchvision squeezenet1_1-b8a52dc0.pth.
+https://download.pytorch.org/models/squeezenet1_1-b8a52dc0.pth
+
+Pretrained weights are not included in this repository.
+See ../README.md for download sources and required locations.

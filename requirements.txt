@@ -1,0 +1,6 @@
+# Install CUDA-enabled torch/torchvision first; see README.md.
+torch==2.8.0
+torchvision==0.23.0
+numpy==2.1.2
+Pillow==11.0.0
+opencv-python==4.12.0.88
