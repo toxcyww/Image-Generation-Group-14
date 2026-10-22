@@ -1,0 +1,42 @@
+{
+  "version": "v3",
+  "downloaded_automatically": false,
+  "files": [
+    {
+      "path": "models/e4e_ffhq_encode.pt",
+      "bytes": 1201649680,
+      "sha256": "2ace1d9a8c05c10a399bcd500b8dda118f759ff1aac89dbdab7435f2136a0999",
+      "source": "https://huggingface.co/AIRI-Institute/HairFastGAN/resolve/47855f8ea72b02294649385211a1ae1fd7dcb58e/pretrained_models/encoder4editing/e4e_ffhq_encode.pt"
+    },
+    {
+      "path": "models/arcface_checkpoint.tar",
+      "bytes": 209280521,
+      "sha256": "52ea5ce4902017b77a2bb811dd9a82f57dee3883e06c18a42d288437263c7a20",
+      "source": "https://github.com/neuralchen/SimSwap/blob/main/docs/guidance/preparation.md#pretrained-model"
+    },
+    {
+      "path": "models/yunet.onnx",
+      "bytes": 232589,
+      "sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4",
+      "source": "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx"
+    },
+    {
+      "path": "third_party/tddfa/weights/mb1_120x120.pth",
+      "bytes": 13755269,
+      "sha256": "a45a946c6e9b16f8d3cf2e69376da9560a7cf9afae671bebceb7e437a405ea79",
+      "source": "https://raw.githubusercontent.com/cleardusk/3DDFA_V2/master/weights/mb1_120x120.pth"
+    },
+    {
+      "path": "models/2DFAN4-11f355bf06.pth.tar",
+      "bytes": 95641761,
+      "sha256": "11f355bf0693120222f5955ce3f9dc8fb5763ebb30a47d7906e509490d32e4aa",
+      "source": "https://www.adrianbulat.com/downloads/python-fan/2DFAN4-11f355bf06.pth.tar"
+    },
+    {
+      "path": "models/l2cs_gaze360_resnet50.safetensors",
+      "bytes": 95773960,
+      "sha256": "75405bdc01f7086b3887280fe50c28a14bc62463a53fa749781e4a3cf98eca0e",
+      "source": "https://huggingface.co/py-feat/l2cs/resolve/241076966f03b197773ce75d23adc60299473ccd/l2cs_gaze360_resnet50.safetensors"
+    }
+  ]
+}

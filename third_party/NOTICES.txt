@@ -1,22 +1,39 @@
-Third-party attribution and licenses
+Third-party architecture and pretrained-asset provenance
 
-e4e: https://github.com/omertov/encoder4editing
-License: e4e/LICENSE
+e4e / StyleGAN2
+https://github.com/omertov/encoder4editing
+Code license: e4e/LICENSE. Native tensor operators are implemented in runtime.py.
 
-SimSwap ArcFace: https://github.com/neuralchen/SimSwap
-License: SimSwap_LICENSE
+SimSwap ArcFace
+https://github.com/neuralchen/SimSwap
+Code license: SimSwap_LICENSE.
 
-3DDFA-V2: https://github.com/cleardusk/3DDFA_V2
-License: tddfa/LICENSE
+3DDFA-V2
+https://github.com/cleardusk/3DDFA_V2
+Code license: tddfa/LICENSE. Small normalization metadata is included.
 
-LPIPS: https://github.com/richzhang/PerceptualSimilarity
-License: lpips/LICENSE
+2D-FAN / face-alignment
+https://github.com/1adrianb/face-alignment
+Source commit: 608505febb47082eb83c2e54254294b3044d976f
+Included source: fan/fan.py. License: fan/LICENSE (BSD-3-Clause).
+The wrapper uses only eyelid and lip opening ratios, not full identity shape matching.
 
-YuNet: OpenCV face_detection_yunet_2023mar.onnx.
+L2CS-Net
+https://github.com/Ahmednull/L2CS-Net
+Source commit: a4d8f7fa5436a2b2b9f088471623b552a85811bd
+Included source: l2cs/model.py. License: l2cs/LICENSE (MIT).
+Weights: py-feat/l2cs, revision 241076966f03b197773ce75d23adc60299473ccd,
+https://huggingface.co/py-feat/l2cs
+The original implementation license does not grant all rights to checkpoint
+redistribution or commercial use. See l2cs/WEIGHT-LICENSE-NOTICE.md for the
+Gaze360 checkpoint's research/noncommercial restrictions. Weight files are
+not published to this repository; users obtain them from their original sources.
+This coursework package uses the fixed checkpoint and the probed head ordering
+with horizontal-flip ensembling. Predictions are proxies, not true gaze angles.
+
+YuNet
 https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet
+Pretrained file: face_detection_yunet_2023mar.onnx, renamed yunet.onnx.
 
-SqueezeNet: torchvision squeezenet1_1-b8a52dc0.pth.
-https://download.pytorch.org/models/squeezenet1_1-b8a52dc0.pth
-
-Pretrained weights are not included in this repository.
-See ../README.md for download sources and required locations.
+All neural networks stay frozen. Large pretrained files are excluded from Git.
+Exact file sizes, SHA256 digests and acquisition links: ../model_manifest.json.

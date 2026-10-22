@@ -1,0 +1,19 @@
+{
+  "version": "v3",
+  "status": "passed",
+  "verified": [
+    "six pretrained files SHA256 verified",
+    "all six frozen model states equal the original experiment",
+    "baseline/optimized loss values and input gradients equal the original experiment on three images",
+    "six saved baseline/final latent images replay within 1 LSB",
+    "one new input completed automatic teacher selection plus both full 200-step branches",
+    "published example is the unchanged approved four-column JPEG"
+  ],
+  "example_sha256": "b54c3dc21a43a8458b457a6722e573cd408cc80e4991487784b352370628c339",
+  "network_weight_updates": 0,
+  "limitations": [
+    "Three development images only.",
+    "Some gaze/eye-opening errors and warm colors remain.",
+    "Repeated floating-point latent optimization can yield nonidentical final images."
+  ]
+}

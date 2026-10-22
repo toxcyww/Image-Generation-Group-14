@@ -211,8 +211,6 @@ class Vision:
     def __init__(self):
         self.detector = cv2.FaceDetectorYN.create('onnx', np.frombuffer((ROOT / 'models/yunet.onnx').read_bytes(), np.uint8),
                                                   np.empty(0, np.uint8), (256, 256), .7, .3, 5000)
-        self.sface = cv2.FaceRecognizerSF.create('onnx', np.frombuffer((ROOT / 'models/sface.onnx').read_bytes(), np.uint8),
-                                                 np.empty(0, np.uint8))
 
     def detect(self, rgb):
         if rgb.shape[:2] != (256, 256):
@@ -246,61 +244,6 @@ class Vision:
         yy, xx = np.mgrid[:112, :112].astype(np.float32)
         xy = np.stack([xx, yy, np.ones_like(xx)], -1) @ inverse.T
         return torch.from_numpy((2 * xy + 1) / 256 - 1)[None].float().to(device)
-
-    def independent_feature(self, rgb):
-        small = cv2.resize(rgb, (256, 256), interpolation=cv2.INTER_AREA)
-        face = self.detect(small)
-        if face is None:
-            return None
-        bgr = cv2.cvtColor(small, cv2.COLOR_RGB2BGR)
-        return self.sface.feature(self.sface.alignCrop(bgr, face)).reshape(-1).copy()
-
-
-class FaceNet:
-    def __init__(self, device='cpu'):
-        folder = ROOT / 'third_party/facenet'
-        package('_pilot_facenet', folder)
-        package('_pilot_facenet.utils', folder / 'utils')
-        module = load_module('_pilot_facenet.inception_resnet_v1', folder / 'inception_resnet_v1.py')
-        self.model = module.InceptionResnetV1(pretrained=None, classify=False)
-        self.model.logits = nn.Linear(512, 8631)
-        self.model.load_state_dict(torch.load(ROOT / 'models/facenet_vggface2.pt', map_location='cpu', weights_only=True), strict=True)
-        self.model.eval().requires_grad_(False).to(device)
-        self.device = device
-
-    @torch.no_grad()
-    def feature(self, rgb, face):
-        rgb = cv2.resize(rgb, (256, 256), interpolation=cv2.INTER_AREA)
-        x, y, w, h = map(float, face[:4])
-        side = max(w, h) * 1.1
-        left, top = x + w / 2 - side / 2, y + h / 2 - side / 2
-        mat = np.array([[160 / side, 0, -left * 160 / side], [0, 160 / side, -top * 160 / side]], np.float32)
-        crop = cv2.warpAffine(rgb, mat, (160, 160))
-        x = torch.from_numpy(crop.copy()).permute(2, 0, 1)[None].float().to(self.device)
-        return self.model((x - 127.5) / 128)[0].cpu().numpy()
-
-
-def perceptual(device='cuda'):
-    folder = str(ROOT / 'third_party')
-    if folder not in sys.path:
-        sys.path.append(folder)
-    # The upstream package imports its unused training dashboard eagerly.
-    # Keep the inference helpers and LPIPS class, without that optional trainer.
-    source = ROOT / 'third_party/lpips/__init__.py'
-    package('lpips', source.parent)
-    module = sys.modules['lpips']
-    module.__file__ = str(source)
-    code = source.read_text(encoding='utf-8').replace('from lpips.trainer import *', '')
-    exec(compile(code, str(source), 'exec'), module.__dict__)
-    import lpips
-    return lpips.LPIPS(net='squeeze', verbose=False).eval().requires_grad_(False).to(device)
-
-
-def cos(a, b):
-    if a is None or b is None:
-        return None
-    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
-
 
 def pose_degrees(a, b):
     relative = a @ b.transpose(-1, -2)

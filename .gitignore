@@ -1,4 +1,4 @@
-# Pretrained weights (keep Python architecture files under third_party/**/models/)
+# Pretrained files, including third-party weight directories.
 /models/
 /torch_home/
 *.pt
@@ -12,8 +12,10 @@
 *.7z
 *.rar
 
-# Generated results and caches
+# Local results, private inputs, validation runs and caches.
+/results/
 /outputs/
+/inputs/
 /.cache/
 /tmp/
 __pycache__/
@@ -21,14 +23,14 @@ __pycache__/
 *.log
 .pytest_cache/
 
-# Local face photos and generated previews
+# Only the explicitly approved four-column example is published.
 *.jpg
 *.jpeg
 *.png
 *.bmp
 *.webp
+!/示例.jpg
 
-# Local environments and credentials
 .venv/
 venv/
 .env
